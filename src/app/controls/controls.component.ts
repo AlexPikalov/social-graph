@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'controls',
+  selector: 'app-controls',
   templateUrl: './controls.component.html',
   styleUrls: ['./controls.component.css']
 })
