@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>This is fetched using callbacks.</h1>
+    <div id="demo-callback">
+    </div>
+    <h1>This is fetched using promises.</h1>
+    <div id="demo-promise">
+    </div>
+    <script src="store.js"></script>
+    <script type="text/javascript">
+      store.sample(function(sampleData) {
+        store.tags(
+          sampleData[0],
+          function(tagData) {
+            document.getElementById('demo-callback').innerHTML =
+              '<h3>Sample</h3>'
+              + JSON.stringify(sampleData)
+              + '<h3>Tags for the first two people</h3>'
+              + JSON.stringify(tagData);
+          },
+          function(error) {
+            // No error is gonna happen but this function must be provided.
+          }
+        );
+      });
+
+      store.sample().then(function(sampleData) {
+        store.tags(sampleData[0]).then(
+          function(tagData) {
+            document.getElementById('demo-promise').innerHTML =
+              '<h3>Sample</h3>'
+              + JSON.stringify(sampleData)
+              + '<h3>Tags for the first two people</h3>'
+              + JSON.stringify(tagData);
+          },
+          function(error) {
+            // No error is gonna happen.
+          });
+      });
+    </script>
+  </body>
+</html>
