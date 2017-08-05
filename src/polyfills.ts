@@ -41,6 +41,8 @@
 import 'core-js/es6/reflect';
 import 'core-js/es7/reflect';
 
+/** rxjs observable methods and operators **/
+import 'rxjs/add/observable/fromPromise';
 
 /**
  * Required to support Web Animations `@angular/animation`.
@@ -70,3 +72,5 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
  * Need to import at least one locale-data with intl.
  */
 // import 'intl/locale-data/jsonp/en';
+
+import './store';

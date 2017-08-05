@@ -12,6 +12,11 @@ import {
   platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
 
+/** rxjs observable methods and operators **/
+import 'rxjs/add/observable/fromPromise';
+
+import './store';
+
 // Unfortunately there's no typing for the `__karma__` variable. Just declare it as any.
 declare const __karma__: any;
 declare const require: any;
