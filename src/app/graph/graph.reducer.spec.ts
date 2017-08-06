@@ -1,5 +1,5 @@
 import { graph } from './graph.reducer';
-import { UpdateGraphAction, ResetGraphAction } from './graph.actions';
+import { UpdateGraphAction, ResetGraphAction, GraphAction } from './graph.actions';
 
 describe('graph reducer', () => {
   it('should add unique connections to the graph on UpdateGraphAction', () => {
@@ -24,5 +24,12 @@ describe('graph reducer', () => {
       connections: [],
       nodes: []
     });
+  });
+
+
+  it('should return current state by default', () => {
+    const action = { type: 'unrecognized' };
+    const state = { connections: [[1, 2]], nodes: [1, 2] };
+    expect(graph(state, action as GraphAction)).toEqual(state);
   });
 });

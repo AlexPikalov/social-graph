@@ -3,22 +3,24 @@ import * as R from 'ramda';
 import { GraphAction, FETCH, UPDATE, RESET } from './graph.actions';
 import { Graph } from './graph';
 
+const defaultGraph = emptyGraph();
+
 /**
  * graph is the graph reducer.
  *
  * @export
- * @param {Graph} [state=emptyGraph()] initial state
+ * @param {Graph} [state] initial state
  * @param {GraphAction} action action has been applied
  * @returns {Graph}
  */
-export function graph(state: Graph = emptyGraph(), action: GraphAction): Graph {
+export function graph(state: Graph = defaultGraph, action: GraphAction): Graph {
   switch (action.type) {
     case UPDATE:
       return updateGraph(state, action.payload);
     case RESET:
       return emptyGraph();
     default:
-      return emptyGraph();
+      return state;
   }
 }
 
