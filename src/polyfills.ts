@@ -42,6 +42,8 @@ import 'core-js/es6/reflect';
 import 'core-js/es7/reflect';
 
 /** rxjs observable methods and operators **/
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/fromPromise';
 
 /**
