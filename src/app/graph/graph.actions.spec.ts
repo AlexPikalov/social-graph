@@ -10,9 +10,8 @@ import {
 describe('Graph actions', () => {
   it('should create FetchGraphAction', () => {
     const _payload = [];
-    const { type, payload } = new FetchGraphAction(_payload);
+    const { type } = new FetchGraphAction();
     expect(type).toBe(FETCH);
-    expect(payload).toBe(_payload);
   });
 
   it('should create UpdateGraphAction', () => {

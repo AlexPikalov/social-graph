@@ -1,1 +1,2 @@
-<app-controls></app-controls>
+<app-controls (add)="add()" (reset)="reset()"></app-controls>
+Graph: {{ graph | async | json }}

@@ -1,10 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreModule, combineReducers } from '@ngrx/store';
 
+import { appReducer } from './app.state';
 import { AppComponent } from './app.component';
 import { ControlsComponent } from './controls';
-import { GraphEffects } from './graph';
+import { GraphEffects, GraphService } from './graph';
 
 @NgModule({
   declarations: [
@@ -13,9 +16,11 @@ import { GraphEffects } from './graph';
   ],
   imports: [
     BrowserModule,
-    EffectsModule.run(GraphEffects)
+    CommonModule,
+    EffectsModule.run(GraphEffects),
+    StoreModule.provideStore(appReducer)
   ],
-  providers: [],
+  providers: [GraphService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

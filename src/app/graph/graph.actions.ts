@@ -22,8 +22,6 @@ export const RESET = 'GRAPH.RESET';
  */
 export class FetchGraphAction implements Action {
   readonly type = FETCH;
-
-  constructor(public readonly payload: number[][]) {}
 }
 
 /**
