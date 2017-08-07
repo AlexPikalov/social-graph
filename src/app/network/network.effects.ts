@@ -4,19 +4,19 @@ import { Effect, Actions } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 
 import { FETCH, UpdateGraphAction } from './graph.actions';
-import { GraphService } from './graph.service';
+import { NetworkService } from './network.service';
 
 /**
  * Graph related effects.
  *
  * @export
- * @class GraphEffects
+ * @class NetworkEffects
  */
 @Injectable()
-export class GraphEffects  {
+export class NetworkEffects  {
   constructor(
     private actions$: Actions,
-    private graphService: GraphService
+    private graphService: NetworkService
   ) {}
 
   /**

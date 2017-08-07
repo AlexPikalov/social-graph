@@ -1,12 +1,12 @@
 import { async } from '@angular/core/testing';
 
-import { GraphService } from './graph.service';
+import { NetworkService } from './network.service';
 
 describe('GraphService', () => {
-  let service: GraphService;
+  let service: NetworkService;
 
   beforeEach(() => {
-    service = new GraphService();
+    service = new NetworkService();
   });
 
   it('should be instantiated', () => {

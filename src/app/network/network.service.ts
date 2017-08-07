@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 /**
  * GraphService is a wrapper around global window.store
  */
-export class GraphService {
+export class NetworkService {
   private store = store;
 
   /**
