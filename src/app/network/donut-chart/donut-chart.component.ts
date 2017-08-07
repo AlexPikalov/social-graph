@@ -34,45 +34,56 @@ export class DonutChartComponent implements OnInit, OnChanges {
   private color;
 
   ngOnInit() {
-    this.color = d3.scaleOrdinal(d3.schemeSet3);
+    this.color = d3.scaleOrdinal(d3.schemeCategory20);
 
     this.svgEl = d3.select(this.el.nativeElement.querySelector('.donut-chat-container'))
       .append('svg')
         .attr('width', this.width)
         .attr('height', this.height)
       .append('g')
-        .attr('transform', `translate(${this.width / 2},${this.height / 2})`);
+        .attr('transform',
+          `translate(${this.round(this.width / 2)},${this.round(this.height / 2)})`);
 
     this.pie = d3.pie()
       .sort(null)
-      .value((d) =>  d.getFreq());
+      .value((d) =>  d.freq);
 
     this.arc = d3.arc()
-      .outerRadius(this.radius - 10)
-      .innerRadius(this.radius - 70);
+      .outerRadius(this.radius)
+      .innerRadius(this.radius * .3);
+
+    this.drawDonut(this.data);
   }
 
   ngOnChanges(changes: SimpleChanges) {
     const data = changes['data'];
-    if (data) {
+    if (data && !data.firstChange) {
       this.drawDonut(data.currentValue);
     }
   }
 
   private drawDonut(data: DonutData[]) {
-    data.forEach(sector => {
-      const g = this.svgEl.selectAll('.arc')
+    const g = this.svgEl.selectAll('.arc')
           .data(this.pie(data))
         .enter().append('g')
           .attr('class', 'arc');
 
       g.append('path')
-          .attr('d', 'arc')
-          .style('fill', d => this.color(d.data.getName()));
+          .attr('d', this.arc)
+          .style('fill', d => {
+            console.log('>>', this.color(d.data.freq));
+            return this.color(d.data.name);
+          });
 
       g.append('text')
           .attr('transform', d => `translate(${this.arc.centroid(d)})`)
-          .attr('dy', '.35em');
-    });
+          .attr('dy', '.35em')
+          .text(d => `${d.data.name} - ${d.data.freq}`);
+    // data.forEach(sector => {
+    // });
+  }
+
+  private round(size: number): number {
+    return Math.floor(size);
   }
 }

@@ -11,7 +11,7 @@ export interface DonutData {
    * @type {string}
    * @memberof Tag
    */
-  getName: () => string;
+  name: string;
 
   /**
    * Frequency is an aggregated frequency for the whole network
@@ -19,5 +19,5 @@ export interface DonutData {
    * @type {number}
    * @memberof Tag
    */
-  getFreq: () => number;
+  freq: number;
 }
