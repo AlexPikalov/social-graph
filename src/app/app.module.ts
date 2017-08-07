@@ -7,7 +7,7 @@ import { StoreModule, combineReducers } from '@ngrx/store';
 import { appReducer } from './app.state';
 import { AppComponent } from './app.component';
 import { ControlsComponent } from './controls';
-import { GraphEffects, GraphService, DonutChartComponent } from './network';
+import { NetworkEffects, NetworkService, DonutChartComponent } from './network';
 
 @NgModule({
   declarations: [
@@ -18,10 +18,10 @@ import { GraphEffects, GraphService, DonutChartComponent } from './network';
   imports: [
     BrowserModule,
     CommonModule,
-    EffectsModule.run(GraphEffects),
+    EffectsModule.run(NetworkEffects),
     StoreModule.provideStore(appReducer())
   ],
-  providers: [GraphService],
+  providers: [NetworkService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
