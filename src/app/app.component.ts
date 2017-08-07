@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import { Graph, FetchGraphAction, ResetGraphAction } from './graph';
+import { Graph, FetchGraphAction, ResetGraphAction } from './network';
 import { State, getGraphState } from './app.state';
 
 @Component({

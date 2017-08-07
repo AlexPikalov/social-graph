@@ -1,6 +1,6 @@
 import { combineReducers } from '@ngrx/store';
 
-import { graph, Graph } from './graph';
+import { graph, Graph } from './network';
 
 /**
  * Application store state interface.
@@ -21,12 +21,14 @@ export interface State {
 /**
  * Summare application reducer.
  */
-export const appReducer = combineReducers({ graph });
+export function appReducer() {
+  return combineReducers({ graph });
+}
 
 /**
  * Returns current state of the graph from the application state
  * @param state application state
  */
-export const getGraphState = function (state: State) {
+export function getGraphState(state: State) {
   return state.graph;
-};
+}
