@@ -1,3 +1,5 @@
 <app-controls (add)="add()" (reset)="reset()"></app-controls>
 <app-donut-chart width="150" height="150" radius="70" [data]="[{name: '#x', freq: 2}, {name: '#y', freq: 1}]"></app-donut-chart>
 Graph: {{ graph | async | json }}
+<br>
+Tags: {{ tags | async | json }}

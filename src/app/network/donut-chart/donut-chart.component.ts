@@ -71,7 +71,6 @@ export class DonutChartComponent implements OnInit, OnChanges {
       g.append('path')
           .attr('d', this.arc)
           .style('fill', d => {
-            console.log('>>', this.color(d.data.freq));
             return this.color(d.data.name);
           });
 
@@ -79,8 +78,6 @@ export class DonutChartComponent implements OnInit, OnChanges {
           .attr('transform', d => `translate(${this.arc.centroid(d)})`)
           .attr('dy', '.35em')
           .text(d => `${d.data.name} - ${d.data.freq}`);
-    // data.forEach(sector => {
-    // });
   }
 
   private round(size: number): number {

@@ -1,7 +1,5 @@
 import { Action } from '@ngrx/store';
 
-import { Graph } from './graph';
-
 /**
  * Fetch new portion of the graph action type.
  */

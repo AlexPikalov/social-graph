@@ -5,9 +5,17 @@ import { Observable } from 'rxjs/Observable';
 
 import { NetworkService } from './network.service';
 import { NetworkEffects } from './network.effects';
-import { FETCH, UPDATE, UpdateGraphAction } from './graph.actions';
+import {
+  FETCH as GRAPH_FETCH,
+  UpdateGraphAction,
+} from './graph.actions';
 
-describe('My Effect', () => {
+import {
+  FETCH as TAG_FETCH,
+  UpdateTagAction,
+} from './tag.actions';
+
+describe('Network Effect', () => {
   let runner: EffectsRunner;
   let graphEffects: NetworkEffects;
   let graphService;
@@ -22,7 +30,7 @@ describe('My Effect', () => {
     ]
   }));
 
-  it('should return a LOGIN_SUCCESS action after logging in', () => {
+  it('should update graph', () => {
     runner = TestBed.get(EffectsRunner);
     graphEffects = TestBed.get(NetworkEffects);
     graphService = TestBed.get(NetworkService);
@@ -30,10 +38,25 @@ describe('My Effect', () => {
     graphService.fetch = jasmine.createSpy('fetch')
       .and.returnValue(Observable.of([[1]]));
 
-    runner.queue({ type: FETCH });
+    runner.queue({ type: GRAPH_FETCH });
 
     graphEffects.fetch$.subscribe(result => {
       expect(result).toEqual(new UpdateGraphAction([[1]]));
+    });
+  });
+
+  it('should update tags', () => {
+    runner = TestBed.get(EffectsRunner);
+    graphEffects = TestBed.get(NetworkEffects);
+    graphService = TestBed.get(NetworkService);
+
+    graphService.tags = jasmine.createSpy('tags')
+      .and.returnValue(Observable.of([['aaa']]));
+
+    runner.queue({ type: TAG_FETCH });
+
+    graphEffects.fetch$.subscribe(result => {
+      expect(result).toEqual(new UpdateTagAction([['aaa']]));
     });
   });
 });
