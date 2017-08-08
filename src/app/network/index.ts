@@ -8,7 +8,7 @@ export { GraphComponent } from './graph.component';
 
 export { DonutChartComponent } from './donut-chart';
 
-export { FetchTagAction } from './tag.actions';
+export { FetchTagAction, ResetTagAction } from './tag.actions';
 export { TagCloudComponent } from './tag-cloud.component';
 export { tags } from './tag.reducer';
 export { Tags } from './tags';

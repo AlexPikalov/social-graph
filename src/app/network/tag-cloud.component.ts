@@ -102,11 +102,13 @@ export class TagCloudComponent implements OnChanges, OnInit {
    * @memberof TagCloudComponent
    */
   private draw() {
-    const node = this.svg.selectAll('.tag')
-      .data(this.pack(this.root).leaves())
-      .enter().append('g')
+    const nodes = this.svg.selectAll('.tag')
+      .data(this.pack(this.root).leaves());
+    const node = nodes.enter().append('g')
         .attr('class', 'tag')
         .attr('transform', d => `translate(${d.x},${d.y})`);
+
+    nodes.exit().remove();
 
     node.append('circle')
       .attr('r', d => d.r || 0)

@@ -8,7 +8,8 @@ import {
   FetchGraphAction,
   ResetGraphAction,
   Tags,
-  FetchTagAction
+  FetchTagAction,
+  ResetTagAction
 } from './network';
 import { State, getGraphState, getTagsState } from './app.state';
 
@@ -52,6 +53,7 @@ export class AppComponent implements OnDestroy {
    */
   reset() {
     this.store.dispatch(new ResetGraphAction());
+    this.store.dispatch(new ResetTagAction());
   }
 
   /**
