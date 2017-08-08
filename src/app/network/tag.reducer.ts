@@ -35,7 +35,6 @@ function emptyTags(): Tags {
 
 /**
  * calculateTags takes a list of tags and retuns a frequency map like
- * #tag: freq
  *
  * @param payload list of tags
  */

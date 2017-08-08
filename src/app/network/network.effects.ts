@@ -40,5 +40,6 @@ export class NetworkEffects  {
   @Effect()
   tags$: Observable<Action> = this.actions$.ofType(TAGS_FETCH)
     .switchMap(action => this.graphService.tags(action.payload))
+    .catch(() => [])
     .map(tags => new UpdateTagAction(tags));
 }

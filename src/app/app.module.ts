@@ -7,13 +7,19 @@ import { StoreModule, combineReducers } from '@ngrx/store';
 import { reducer } from './app.state';
 import { AppComponent } from './app.component';
 import { ControlsComponent } from './controls';
-import { NetworkEffects, NetworkService, DonutChartComponent } from './network';
+import {
+  NetworkEffects,
+  NetworkService,
+  TagCloudComponent,
+  GraphComponent
+} from './network';
 
 @NgModule({
   declarations: [
     AppComponent,
     ControlsComponent,
-    DonutChartComponent
+    // GraphComponent,
+    TagCloudComponent
   ],
   imports: [
     BrowserModule,

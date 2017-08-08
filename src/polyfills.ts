@@ -45,6 +45,7 @@ import 'core-js/es7/reflect';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/fromPromise';
+import 'rxjs/add/operator/catch';
 
 /**
  * Required to support Web Animations `@angular/animation`.
