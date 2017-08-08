@@ -9,7 +9,7 @@ describe('graph reducer', () => {
     };
     const action = new UpdateGraphAction([[3, 4], [2, 1], [1, 2], [2, 3]]);
     expect(graph(initGraph, action)).toEqual({
-      connections: [[1, 2], [3, 4], [2, 3]],
+      connections: [[1, 2], [3, 4], [2, 1], [2, 3]],
       nodes: [1, 2, 3, 4]
     });
   });

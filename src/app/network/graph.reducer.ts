@@ -75,5 +75,5 @@ function mergeUniq<T>(list: T[], delta: T[]): Function {
  * @returns {boolean}
  */
 function connectionsEquals<T>(a: T[], b: T[]): boolean {
-  return R.equals(a, b) || R.equals(a, R.reverse(b));
+  return R.equals(a, b);
 }

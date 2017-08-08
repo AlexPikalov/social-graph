@@ -1,6 +1,3 @@
 <app-controls (add)="add()" (reset)="reset()"></app-controls>
-<!-- <app-donut-chart width="150" height="150" radius="70" [data]="[{name: '#x', freq: 2}, {name: '#y', freq: 1}]"></app-donut-chart> -->
-<!-- <app-graph [data]="graph | async"></app-graph> -->
- Graph: {{ graph | async | json }} 
-<br>
+<app-graph [width]="600" [height]="600" [data]="graph | async"></app-graph>
 <app-tag-cloud [width]="600" [height]="600" [data]="tags | async"></app-tag-cloud>

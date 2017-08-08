@@ -18,7 +18,7 @@ import {
   declarations: [
     AppComponent,
     ControlsComponent,
-    // GraphComponent,
+    GraphComponent,
     TagCloudComponent
   ],
   imports: [

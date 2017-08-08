@@ -13,7 +13,7 @@ import {
 import {
   FETCH as TAG_FETCH,
   UpdateTagAction,
-} from './tag.actions';
+} from './tags';
 
 describe('Network Effect', () => {
   let runner: EffectsRunner;
