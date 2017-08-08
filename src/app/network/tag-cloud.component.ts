@@ -12,7 +12,8 @@ import { Tag } from './tags';
 
 @Component({
   selector: 'app-tag-cloud',
-  template: `<div id='graph-container'></div>`
+  template: `<div id='graph-container'></div>`,
+  styleUrls: ['./tag-cloud.component.css']
 })
 export class TagCloudComponent implements OnChanges, OnInit {
   @Input() width = 200;
@@ -33,7 +34,7 @@ export class TagCloudComponent implements OnChanges, OnInit {
    * @private
    * @memberof TagCloudComponent
    */
-  private color = d3.scaleOrdinal(d3.schemeCategory20c);
+  private color = d3.scaleOrdinal(d3.schemeCategory10);
 
   /**
    * D3 pack function. Main purpose of this function is space distribution of nodes
@@ -108,7 +109,7 @@ export class TagCloudComponent implements OnChanges, OnInit {
         .attr('transform', d => `translate(${d.x},${d.y})`);
 
     node.append('circle')
-      .attr('r', d => d.r)
+      .attr('r', d => d.r || 0)
       .style('fill', d => this.color(d.data.freq));
 
     // text hint
