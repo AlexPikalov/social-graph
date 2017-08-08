@@ -5,7 +5,7 @@ import { Action } from '@ngrx/store';
 
 import { FETCH as GRAPH_FETCH, UpdateGraphAction } from './graph.actions';
 import { NetworkService } from './network.service';
-import { FETCH as TAGS_FETCH, UpdateTagAction } from './tag.actions';
+import { FETCH as TAGS_FETCH, UpdateTagAction } from './tags';
 
 /**
  * Graph related effects.
