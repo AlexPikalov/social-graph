@@ -1,8 +1,11 @@
 /**
  * Tag frequency map
  *
- * @interface Tags
+ * @interface Tag
  */
-export interface Tags {
-  [index: string]: number;
+export interface Tag {
+  name: string;
+  freq: number;
 }
+
+export type Tags = Tag[];

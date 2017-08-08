@@ -30,7 +30,7 @@ export function tags(state: Tags = defaultGraph, action: TagAction): Tags {
  * @returns {Tags}
  */
 function emptyTags(): Tags {
-  return {};
+  return [];
 }
 
 /**
@@ -42,7 +42,6 @@ function emptyTags(): Tags {
 function calculateTags(payload: string[][]): Tags {
   const flatten = R.flatten(payload);
   const getTagGroups = R.groupBy(R.identity);
-  const toFequencies = R.map(R.prop('length'));
-
-  return toFequencies(getTagGroups(flatten));
+  const pairs = R.toPairs(getTagGroups(flatten));
+  return R.map(kv => ({ name: kv[0], freq: kv[1].length }), pairs);
 }
