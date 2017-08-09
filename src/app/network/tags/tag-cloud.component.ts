@@ -12,7 +12,10 @@ import { Tag } from './tags';
 
 @Component({
   selector: 'app-tag-cloud',
-  template: `<div id='graph-container'></div>`,
+  template: `<div>
+    <div *ngIf="this.data.length" class="hint">Hint: hover a dot to see its tag</div>
+    <div id='graph-container'></div>
+  </div>`,
   styleUrls: ['./tag-cloud.component.css']
 })
 export class TagCloudComponent implements OnChanges, OnInit {

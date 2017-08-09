@@ -5,7 +5,11 @@ import * as d3 from 'd3';
 
 @Component({
   selector: 'app-graph',
-  template: `<div id="graph-container"></div>`
+  template: `<div>
+    <div *ngIf="data.nodes.length" class="hint">Hint: hover a node to see its id and what it follows</div>
+    <div id='graph-container'></div>
+  </div>`,
+  styleUrls: ['./graph.component.css']
 })
 export class GraphComponent implements OnInit, OnChanges {
   /**
@@ -47,6 +51,10 @@ export class GraphComponent implements OnInit, OnChanges {
    */
   private svg;
 
+  private nodes;
+
+  private connections;
+
   /**
    * A map that holds relations between node id and it's azimuth.
    */
@@ -61,6 +69,9 @@ export class GraphComponent implements OnInit, OnChanges {
         .attr('height', this.width)
       .append('g')
         .attr('transform', `translate(${this.width / 2},${this.height / 2})`);
+
+    this.connections = this.svg.append('g').attr('class', 'connections');
+    this.nodes = this.svg.append('g').attr('class', 'nodes');
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -77,7 +88,7 @@ export class GraphComponent implements OnInit, OnChanges {
    * @param children 
    */
   private draw(children) {
-    const connections = this.svg.selectAll('line')
+    const connections = this.connections.selectAll('line')
       .data(this.data.connections);
 
     // update existing node connections once new added
@@ -97,7 +108,9 @@ export class GraphComponent implements OnInit, OnChanges {
       .attr('stroke-width', 1)
       .attr('class', d => `from-${d[0]} to-${d[1]}`);
 
-    const nodes = this.svg.selectAll('circle')
+    connections.exit().remove();
+
+    const nodes = this.nodes.selectAll('circle')
       .data(this.data.nodes);
 
     // update existing node positions onse new added
@@ -117,6 +130,8 @@ export class GraphComponent implements OnInit, OnChanges {
         .on('mouseout', d => this.unhighlightConnectionsFrom(d))
       .append('title')
         .text(d => d);
+
+    nodes.exit().remove();
   }
 
   /**

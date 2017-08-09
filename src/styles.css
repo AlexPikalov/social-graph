@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+html {
+    font-family: Arial;
+}
+
+.hint {
+    text-align: center;
+    color: #7a7a7a;
+}

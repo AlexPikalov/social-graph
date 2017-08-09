@@ -1,4 +1,8 @@
-app-tag-cloud {
+app-tag-cloud, app-graph {
   display: block;
   text-align: center
+}
+
+.content {
+  padding-left: 80px;
 }

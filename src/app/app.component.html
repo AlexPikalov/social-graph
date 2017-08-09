@@ -1,3 +1,8 @@
 <app-controls (add)="add()" (reset)="reset()"></app-controls>
-<app-graph [width]="600" [height]="600" [data]="graph | async"></app-graph>
-<app-tag-cloud [width]="600" [height]="600" [data]="tags | async"></app-tag-cloud>
+<div class="content">
+    <div class="hint" *ngIf="!(graph | async)?.nodes.length">
+        No data available. Click on Add button to get next 10 relations
+    </div>
+    <app-graph [width]="600" [height]="600" [data]="graph | async"></app-graph>
+    <app-tag-cloud [width]="600" [height]="600" [data]="tags | async"></app-tag-cloud>
+</div>
