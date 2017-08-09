@@ -19,6 +19,7 @@ export class TagCloudComponent implements OnChanges, OnInit {
   @Input() width = 200;
   @Input() height = 200;
   @Input() data;
+  c = 1;
 
   /**
    * D3 svg selection
@@ -34,7 +35,7 @@ export class TagCloudComponent implements OnChanges, OnInit {
    * @private
    * @memberof TagCloudComponent
    */
-  private color = d3.scaleOrdinal(d3.schemeCategory10);
+  private color = d3.scaleOrdinal(d3.schemeCategory20);
 
   /**
    * D3 pack function. Main purpose of this function is space distribution of nodes
@@ -103,7 +104,14 @@ export class TagCloudComponent implements OnChanges, OnInit {
    */
   private draw() {
     const nodes = this.svg.selectAll('.tag')
-      .data(this.pack(this.root).leaves());
+        .data(this.pack(this.root).leaves());
+
+    nodes.select('g.tag').attr('transform', d => `translate(${d.x},${d.y})`);
+    nodes.select('title').text(d => `${d.data.name} - ${d.data.freq}`);
+    nodes.select('circle')
+      .attr('r', d => d.r || 0)
+      .style('fill', d => this.color(d.data.freq));
+
     const node = nodes.enter().append('g')
         .attr('class', 'tag')
         .attr('transform', d => `translate(${d.x},${d.y})`);
