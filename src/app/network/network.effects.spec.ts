@@ -8,7 +8,7 @@ import { NetworkEffects } from './network.effects';
 import {
   FETCH as GRAPH_FETCH,
   UpdateGraphAction,
-} from './graph.actions';
+} from './graph';
 
 import {
   FETCH as TAG_FETCH,
