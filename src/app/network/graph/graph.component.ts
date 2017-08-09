@@ -3,6 +3,9 @@ import { Component, Input, OnChanges, OnInit, ElementRef, SimpleChanges } from '
 import * as R from 'ramda';
 import * as d3 from 'd3';
 
+const EDGE_COLOR = '#a8a8a8';
+const HIGHLIGHTED_EDGE_COLOR = '#ffb43d';
+
 @Component({
   selector: 'app-graph',
   template: `<div>
@@ -106,7 +109,7 @@ export class GraphComponent implements OnInit, OnChanges {
       .attr('y1', d => this.y(this.angles[d[0]]))
       .attr('x2', d => this.x(this.angles[d[1]]))
       .attr('y2', d => this.y(this.angles[d[1]]))
-      .attr('stroke', 'black')
+      .attr('stroke', EDGE_COLOR)
       .attr('stroke-width', 1)
       .attr('class', d => `from-${d[0]} to-${d[1]}`);
 
@@ -169,8 +172,8 @@ export class GraphComponent implements OnInit, OnChanges {
   private highlightConnectionsFrom(node: number) {
     this.svg.select(`#node-${node}`).attr('r', 8);
     this.svg.selectAll(`.from-${node}`)
-      .attr('stroke', 'blue')
-      .attr('stroke-width', 2);
+      .attr('stroke', HIGHLIGHTED_EDGE_COLOR)
+      .attr('stroke-width', 3);
   }
 
   /**
@@ -180,7 +183,7 @@ export class GraphComponent implements OnInit, OnChanges {
   private unhighlightConnectionsFrom(node: number) {
     this.svg.select(`#node-${node}`).attr('r', 6);
     this.svg.selectAll(`.from-${node}`)
-      .attr('stroke', 'black')
+      .attr('stroke', EDGE_COLOR)
       .attr('stroke-width', 1);
   }
 }
