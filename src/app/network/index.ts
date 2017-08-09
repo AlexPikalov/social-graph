@@ -1,10 +1,9 @@
 export { NetworkEffects } from './network.effects';
 export { NetworkService } from './network.service';
 
-export { FetchGraphAction, ResetGraphAction } from './graph.actions';
-export { Graph } from './graph';
-export { graph } from './graph.reducer';
-export { GraphComponent } from './graph.component';
+export { FetchGraphAction, ResetGraphAction } from './graph';
+export { Graph, graph } from './graph';
+export { GraphComponent } from './graph';
 
 export { DonutChartComponent } from './donut-chart';
 

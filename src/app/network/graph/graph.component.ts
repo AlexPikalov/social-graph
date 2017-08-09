@@ -6,7 +6,9 @@ import * as d3 from 'd3';
 @Component({
   selector: 'app-graph',
   template: `<div>
-    <div *ngIf="data.nodes.length" class="hint">Hint: hover a node to see its id and what it follows</div>
+    <div *ngIf="data.nodes.length" class="hint">
+      Hint: hover a node to see its id and what it follows
+    </div>
     <div id='graph-container'></div>
   </div>`,
   styleUrls: ['./graph.component.css']
